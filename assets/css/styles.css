@@ -239,13 +239,14 @@ body.light-theme {
 }
 
 .nav__logo {
-  color: var(--first-color);
+  /*color: var(--first-color);*/
+  color: var(--text-color);
   font-weight: var(--font-medium);
   transition: 0.4s;
 }
 
 .nav__logo:hover {
-  color: var(--first-color-alt);
+  /*color: var(--first-color-alt);*/
 }
 
 .nav__menu {
