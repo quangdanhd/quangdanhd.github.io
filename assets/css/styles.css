@@ -973,6 +973,10 @@ body.light-theme {
 
 /* For medium devices */
 @media screen and (min-width: 630px) {
+  .services .services__container .services__card:nth-of-type(4) {
+    display: none;
+  }
+
   .nav__menu {
     width: 328px;
     left: 0;
