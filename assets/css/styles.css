@@ -966,7 +966,8 @@ body.light-theme {
     grid-template-columns: repeat(2, max-content);
   }
 
-  .work__img {
+  .work__img,
+  .work__title {
     width: 165px;
   }
 }
@@ -1035,7 +1036,8 @@ body.light-theme {
     grid-template-columns: repeat(2, max-content);
   }
 
-  .work__img {
+  .work__img,
+  .work__title {
     width: 250px;
   }
 
