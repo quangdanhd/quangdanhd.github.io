@@ -1,6 +1,7 @@
 import gulp from "gulp";
 import fs from "fs-extra";
 import rev from "gulp-rev";
+import imagemin from "gulp-imagemin";
 import rename from "gulp-rename";
 import revReplace from "gulp-rev-replace";
 
@@ -14,13 +15,11 @@ gulp.task("clean", function () {
 gulp.task("rev", function () {
   return gulp
     .src([
-      `./src/${output}/**/*.css`,
-      `./src/${output}/**/*.js`,
-      `./src/${output}/**/*.jpg`,
-      `./src/${output}/**/*.png`,
-      `./src/${output}/**/*.gif`,
-      `./src/${output}/**/*.ico`,
+      `./src/${output}/**/*.{css,js}`,
+      `./src/${output}/**/*.{jpg,png,svg,gif,ico,webp}`,
+      `./src/${output}/**/*`,
     ])
+    .pipe(imagemin())
     .pipe(rev())
     .pipe(
       rename(function (path) {

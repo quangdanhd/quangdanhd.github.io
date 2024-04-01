@@ -8,6 +8,8 @@ help: ## Display this help.
 	npx browser-sync start --config bs-config.js
 3: ## browser-sync with ip: make 3 a=
 	npx browser-sync start --config bs-config.js --address $(a)
+g: ## gulp
+	gulp
 ##@ Format
 c: ## prettier check
 	prettier --check .
