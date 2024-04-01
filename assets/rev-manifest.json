@@ -4,11 +4,13 @@
   "favicons/android-chrome-192x192.png": "favicons/android-chrome-192x192-22fa7d4073.png",
   "favicons/android-chrome-512x512.png": "favicons/android-chrome-512x512-a728b76082.png",
   "favicons/apple-touch-icon.png": "favicons/apple-touch-icon-7e8ad8bc1f.png",
+  "favicons/browserconfig.xml": "favicons/browserconfig-f43c099752.xml",
   "favicons/favicon-16x16.png": "favicons/favicon-16x16-f19bfe4951.png",
   "favicons/favicon-32x32.png": "favicons/favicon-32x32-fc3078f148.png",
   "favicons/favicon.ico": "favicons/favicon-bc1900cb1b.ico",
   "favicons/mstile-150x150.png": "favicons/mstile-150x150-a5923639a5.png",
   "favicons/safari-pinned-tab.svg": "favicons/safari-pinned-tab-3b00a4352f.svg",
+  "favicons/site.webmanifest": "favicons/site-528644d3ba.webmanifest",
   "img/about.jpg": "img/about-e3b929ea78.jpg",
   "img/perfil.png": "img/perfil-578139e341.png",
   "img/testimonial1.png": "img/testimonial1-d48c5c267f.png",
@@ -27,5 +29,6 @@
   "js/main.js": "js/main-2eb6e13147.min.js",
   "js/mixitup.min.js": "js/mixitup-e2938583de.min.js",
   "js/scrollreveal.min.js": "js/scrollreveal-b9a0e59373.min.js",
-  "js/swiper-bundle.min.js": "js/swiper-bundle-ad31f9a119.min.js"
+  "js/swiper-bundle.min.js": "js/swiper-bundle-ad31f9a119.min.js",
+  "pdf/cv.pdf": "pdf/cv-8ddebba159.pdf"
 }

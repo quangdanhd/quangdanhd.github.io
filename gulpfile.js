@@ -26,6 +26,8 @@ gulp.task("clean", function () {
 });
 
 gulp.task("rev", function () {
+  const extensions = ["css", "js", "jpg", "png", "svg", "gif", "ico", "webp"];
+
   const cssStream = gulp
     .src(`./src/${output}/**/*.css`)
     .pipe(uglifyCss())
@@ -46,7 +48,15 @@ gulp.task("rev", function () {
     .pipe(rev())
     .pipe(gulp.dest(`./${output}`));
 
-  return merge(cssStream, jsStream, imageStream)
+  const otherStream = gulp
+    .src([
+      `./src/${output}/**/*`,
+      `!./src/${output}/**/*.{${extensions.join(",")}}`,
+    ])
+    .pipe(rev())
+    .pipe(gulp.dest(`./${output}`));
+
+  return merge(cssStream, jsStream, imageStream, otherStream)
     .pipe(rev.manifest())
     .pipe(gulp.dest(`./${output}`));
 });
