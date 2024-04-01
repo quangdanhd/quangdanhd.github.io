@@ -1,11 +1,24 @@
 import gulp from "gulp";
 import fs from "fs-extra";
 import rev from "gulp-rev";
-import imagemin from "gulp-imagemin";
 import rename from "gulp-rename";
 import revReplace from "gulp-rev-replace";
 
+import imagemin from "gulp-imagemin";
+import uglifyCss from "gulp-uglifycss";
+import uglify from "gulp-uglify";
+
+import merge from "merge-stream";
+
 const output = "assets";
+
+const addMinSuffixIfNeeded = () => {
+  return rename(function (path) {
+    if (!path.basename.endsWith(".min")) {
+      path.basename += ".min";
+    }
+  });
+};
 
 gulp.task("clean", function () {
   fs.emptyDirSync(`./${output}`);
@@ -13,25 +26,27 @@ gulp.task("clean", function () {
 });
 
 gulp.task("rev", function () {
-  return gulp
-    .src([
-      `./src/${output}/**/*.{css,js}`,
-      `./src/${output}/**/*.{jpg,png,svg,gif,ico,webp}`,
-      `./src/${output}/**/*`,
-    ])
+  const cssStream = gulp
+    .src(`./src/${output}/**/*.css`)
+    .pipe(uglifyCss())
+    .pipe(rev())
+    .pipe(addMinSuffixIfNeeded())
+    .pipe(gulp.dest(`./${output}`));
+
+  const jsStream = gulp
+    .src(`./src/${output}/**/*.js`)
+    .pipe(uglify())
+    .pipe(rev())
+    .pipe(addMinSuffixIfNeeded())
+    .pipe(gulp.dest(`./${output}`));
+
+  const imageStream = gulp
+    .src([`./src/${output}/**/*.{jpg,png,svg,gif,ico,webp}`])
     .pipe(imagemin())
     .pipe(rev())
-    .pipe(
-      rename(function (path) {
-        const dashIndex = path.basename.lastIndexOf("-");
-        if (dashIndex !== -1) {
-          const basename = path.basename.substring(0, dashIndex);
-          const hash = path.basename.substring(dashIndex + 1);
-          path.basename = `${basename}.${hash}`;
-        }
-      })
-    )
-    .pipe(gulp.dest(`./${output}`))
+    .pipe(gulp.dest(`./${output}`));
+
+  return merge(cssStream, jsStream, imageStream)
     .pipe(rev.manifest())
     .pipe(gulp.dest(`./${output}`));
 });
