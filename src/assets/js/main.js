@@ -119,14 +119,14 @@ const selectedIcon = localStorage.getItem("selected-icon");
 
 // We obtain the current theme that the interface has by validating the light-theme class
 const getCurrentTheme = () =>
-  document.body.classList.contains(lightTheme) ? "dark" : "light";
+  document.body.classList.contains(lightTheme) ? "light" : "dark";
 const getCurrentIcon = () =>
   themeButton.classList.contains(iconSun) ? iconSun : iconMoon;
 
 // We validate if the user previously chose a topic
 if (selectedTheme) {
   // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the light
-  document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
+  document.body.classList[selectedTheme === "dark" ? "remove" : "add"](
     lightTheme
   );
   if (selectedIcon === iconSun) {
